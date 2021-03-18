@@ -126,6 +126,7 @@ let rendererConfig = {
                 process,
             };
         },
+
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
