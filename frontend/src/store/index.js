@@ -1,15 +1,25 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 
-Vue.use(Vuex)
+import basic from './modules/basic/index'
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+import currencyPairs from './modules/currencyPairs/index'
+import records from './modules/records/index'
+
+export default createStore({
+
+    state: {
+
+    },
+    mutations: {
+
+    },
+    actions: {
+
+    },
+    modules: {
+        basic,
+        currencyPairs,
+        records
+    }
 })
+

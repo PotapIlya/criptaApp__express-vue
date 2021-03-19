@@ -6,37 +6,33 @@
         </router-link>
 
 
-        <ul v-if="arrayItems.length">
-            <li v-for="item in arrayItems"
+        <ul v-if="GET_ARRAY_ITEMS.length">
+            <li v-for="item in GET_ARRAY_ITEMS"
                 :key="item.id">
-                {{ item.title }}
+                <router-link :to=" '/records/'+item.id ">
+                    {{ item.title }}
+                </router-link>
             </li>
         </ul>
+
+
     </div>
 </template>
 
 <script>
-import axios from "axios";
-import { mapGetters } from "vuex";
-
+import { mapGetters } from 'vuex';
 export default {
-    name: "Index",
+    name: "RecordsIndex",
     data: () => ({
-        arrayItems: [],
+
     }),
     computed:{
-        ...mapGetters([
-            'GET_HREF'
-        ])
+        ...mapGetters('records', ['GET_ARRAY_ITEMS'])
     },
-    mounted() {
-        axios.get( this.GET_HREF+'records')
-            .then(res => {
-                this.arrayItems = res.data;
-            })
-            .catch(error => {
-                console.log(error.body)
-            })
+    created() {
+        if ( this.GET_ARRAY_ITEMS.length === 0 ){
+            this.$store.dispatch('records/ACTION_GET_SEND_AXIOS')
+        }
     }
 }
 </script>

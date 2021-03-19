@@ -5,8 +5,8 @@
             Add
         </router-link>
 
-        <ul v-if="arrayItems.length">
-            <li v-for="item in arrayItems"
+        <ul v-if="GET_ARRAY_ITEMS.length">
+            <li v-for="item in GET_ARRAY_ITEMS"
             :key="item.id">
                 {{ item.name }}
             </li>
@@ -19,44 +19,33 @@
 import axios from 'axios'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    name: "Index",
+    name: "currencyPairsIndex",
     data: () => ({
         input: '',
-        arrayItems: [],
     }),
     computed: {
-        ...mapGetters([
-            'GET_HREF',
-            'GET_CURRENCY_PAIRS'
-        ]),
+        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS']),
 
+        ...mapActions('currencyPairs', ['ACTION_GET_SEND_AXIOS'])
     },
     methods:{
-        ...mapActions([
-            'ACTION_SEND_AXIOS'
-        ]),
 
     },
-    mounted()
+    created()
     {
-
-        console.log(
-            this.$store.dispatch('someAsyncTask')
-        )
-
-
-        // console.log(this.GET_CURRENCY_PAIRS, '!!')
-
-
-        //
-        // axios.get( this.GET_HREF+'currencyPairs')
-        //     .then(res => {
-        //         this.arrayItems = res.data;
-        //     })
-        //     .catch(error => {
-        //         console.log(error.body)
-        //     })
+        if ( this.GET_ARRAY_ITEMS.length === 0 ){
+            this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS')
+        }
     }
+    // async created()
+    // {
+    //     if ( this.GET_ARRAY_ITEMS.length === 0 ){
+    //         await this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS')
+    //             .then( () => {
+    //                 console.log(this.GET_ARRAY_ITEMS)
+    //             })
+    //     }
+    // }
 }
 </script>
 

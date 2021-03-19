@@ -38,8 +38,6 @@ class RecordsController extends Controller
     public function store(Request $request)
     {
 
-
-
         $create = Records::create([
             'currency_pairs_id' => $request->input('currencyPairs'),
             'title' => $request->input('title'),
@@ -67,7 +65,9 @@ class RecordsController extends Controller
      */
     public function show(Records $records)
     {
-        //
+        return response(
+            $records->first()
+        );
     }
 
     /**

@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <Nav />
-        <router-view></router-view>
+          <Nav />
+          <router-view></router-view>
     </div>
 </template>
 
@@ -16,3 +16,10 @@
     }
 </script>
 
+
+<style>
+
+input, textarea{
+    border: 1px solid #000 !important;
+}
+</style>

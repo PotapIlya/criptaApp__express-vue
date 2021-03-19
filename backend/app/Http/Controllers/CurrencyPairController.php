@@ -38,7 +38,7 @@ class CurrencyPairController extends Controller
     public function store(Request $request)
     {
         $create = CurrencyPair::create([
-            'name' => $request->input('name')
+            'name' => $request->input('data')
         ]);
         if ( $create )
         {
@@ -55,9 +55,9 @@ class CurrencyPairController extends Controller
      * @param  \App\Models\CurrencyPair  $currencyPair
      * @return \Illuminate\Http\Response
      */
-    public function show(CurrencyPair $currencyPair)
+    public function show($id)
     {
-        //
+       return $id;
     }
 
     /**

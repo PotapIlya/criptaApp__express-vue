@@ -1,48 +1,32 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import Index from './../views/Index'
 
 import RecordsIndex from './../views/records/Index'
 import RecordsCreate from './../views/records/Create'
+import RecordsShow from './../views/records/Show'
 
 import currencyPairsIndex from './../views/currencyPairs/Index'
 import currencyPairsCreate from './../views/currencyPairs/Create'
 
-
-Vue.use(VueRouter)
-
 const routes = [
 
-    { path: '/',  name: 'index',  component: Index},
+    { path: '/', name: 'Index', component: Index },
 
-    { path: '/records',  name: 'index',  component: RecordsIndex},
-    { path: '/records/create',  name: 'create',  component: RecordsCreate},
+    { path: '/records',  name: 'RecordsIndex',  component: RecordsIndex},
+    { path: '/records/create',  name: 'RecordsCreate',  component: RecordsCreate},
+    { path: '/records/:id',  name: 'RecordsShow',  component: RecordsShow},
 
-    { path: '/currencyPairs',  name: 'index',  component: currencyPairsIndex},
-    { path: '/currencyPairs/create',  name: 'create',  component: currencyPairsCreate},
+    { path: '/currencyPairs',  name: 'currencyPairsIndex',  component: currencyPairsIndex},
+    { path: '/currencyPairs/create',  name: 'currencyPairsCreate',  component: currencyPairsCreate},
 
 
-    { path: '*', redirect: '/' }
+    // { path: '*', redirect: '/' },
 
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: Home
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

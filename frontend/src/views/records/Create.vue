@@ -1,44 +1,67 @@
 <template>
-    <div>
+    <ul style="display: flex; flex-direction: column">
 
+        <li style="display: flex">
+            <span>Валюта</span>
+            <select v-model="form.currencyPairs" name="" id="">
+                <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">
+                    {{ item.name }}
+                </option>
+            </select>
+        </li>
+        <li style="display: flex">
+            <span>Заголовок</span>
+            <input type="text" v-model="form.title">
+        </li>
+        <li style="display: flex">
+            <span>description</span>
+            <textarea name="" v-model="form.description" id="description" cols="30" rows="10"></textarea>
+        </li>
+        <li style="display: flex">
+            <span>price_start</span>
+            <input type="number" v-model="form.price_start">
+        </li>
+        <li style="display: flex">
+            <span>price_end</span>
+            <input type="number" v-model="form.price_end">
+        </li>
+        <li style="display: flex">
+            <span>count</span>
+            <input type="number" v-model="form.count">
+        </li>
+        <li style="display: flex">
+            <span>profit</span>
+            <input type="number" v-model="form.profit">
+        </li>
+        <li style="display: flex">
+            <span>side</span>
+            <input type="text" v-model="form.side">
+        </li>
 
-
-        <select v-model="currencyPairs" name="" id="">
-            <option v-for="item in arrayCurrencyPairs" :key="item.id" :value="item.id">
-                {{ item.name }}
-            </option>
-        </select>
-
-        <input type="text" v-model="title">
-        <textarea name="" v-model="description" id="description" cols="30" rows="10"></textarea>
-
-        <input type="number" v-model="price_start">
-        <input type="number" v-model="price_end">
-        <input type="number" v-model="count">
-        <input type="number" v-model="profit">
-        <input type="text" v-model="side">
 
 
         <button @click="send">Send</button>
-    </div>
+    </ul>
 </template>
 
 <script>
 import axios from 'axios'
-import { mapGetters } from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 export default {
-    name: "Create",
+    name: "RecordsCreate",
     data: () => ({
        // FORM
-        currencyPairs: null,
-        title: '',
-        description: '',
-        image: '',
-        price_start: '',
-        price_end: '',
-        count: '',
-        profit: '',
-        side: false,
+        form: {
+            currencyPairs: null,
+            title: '',
+            description: '',
+            image: '',
+            price_start: '',
+            price_end: '',
+            count: '',
+            profit: '',
+            side: false,
+        },
         // END FORM
 
         arrayCurrencyPairs: [],
@@ -46,44 +69,25 @@ export default {
 
     }),
     computed: {
-        ...mapGetters([
-            'GET_HREF'
-        ])
+        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS']),
+
+
+        ...mapActions('currencyPairs', ['ACTION_GET_SEND_AXIOS'])
+    },
+    created() {
+        if ( this.GET_ARRAY_ITEMS.length === 0 ){
+           this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS')
+        }
     },
     mounted() {
-        axios.get( this.GET_HREF+'currencyPairs')
-            .then(res => {
-                this.arrayCurrencyPairs = res.data;
-
-
-            })
-            .catch(error => {
-                console.log(error.body)
-            })
+        // this.currencyPairs = this.GET_ARRAY_ITEMS[0].id
     },
-    methods:{
-        send()
-        {
 
-            axios.post( this.GET_HREF+'records',
-        {
-            currencyPairs: this.currencyPairs,
-            title: this.title,
-            description: this.description,
-            image: this.image,
-            price_start: this.price_start,
-            price_end: this.price_end,
-            count: this.count,
-            profit: this.profit,
-            side: this.side,
-            })
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(error => {
-                console.log(error.body)
-            })
+    methods:{
+        send(){
+            this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
         }
+
     }
 }
 </script>
