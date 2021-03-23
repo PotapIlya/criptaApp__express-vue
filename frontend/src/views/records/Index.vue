@@ -5,15 +5,36 @@
             Add
         </router-link>
 
+        <table
+            v-if="GET_ARRAY_ITEMS.length"
+            class="table table-hover"
+        >
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
 
-        <ul v-if="GET_ARRAY_ITEMS.length">
-            <li v-for="item in GET_ARRAY_ITEMS"
-                :key="item.id">
-                <router-link :to=" '/records/'+item.id ">
-                    {{ item.title }}
-                </router-link>
-            </li>
-        </ul>
+                <tr
+                    v-for="item in GET_ARRAY_ITEMS"
+                    :key="item.id"
+                >
+                    <th scope="row">{{ item.id }}</th>
+                    <td> {{ item.title }}</td>
+                    <td>Otto</td>
+                    <td>
+                        <router-link :to=" '/records/'+item.id ">
+                           Перейти
+                        </router-link>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
 
 
     </div>

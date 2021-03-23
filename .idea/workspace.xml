@@ -2,77 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe7f83af-4d7d-4153-a699-169dc42b5c53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/records/Show.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/assets/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/basic/_nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/CurrencyPairController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/CurrencyPairController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/RecordsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/RecordsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/basic/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/basic/Nav.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/vuetify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/basic/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/basic/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/records/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/mutations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Create.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vue.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.babelrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/build.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/dev-client.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/dev-runner.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/webpack.main.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/webpack.renderer.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.electron-vue/webpack.web.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/build/icons/256x256.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/build/icons/icon.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/build/icons/icon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/dist/electron/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/dist/web/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/index.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/main/index.dev.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/main/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/assets/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/assets/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/components/basic/Nav.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/router/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/modules/Basic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/modules/Counter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/modules/CurrencyPairs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/modules/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/store/modules/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/views/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/views/currencyPairs/Create.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/views/currencyPairs/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/views/records/Create.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/src/renderer/views/records/Index.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend22222/static/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Show.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +34,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -225,7 +172,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/public/assets/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Vue" />
     <property name="ts.external.directory.path" value="D:\PhpStorm 2020.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -233,11 +181,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\cripta_app\frontend\public\assets\css" />
       <recent name="C:\OpenServer\domains\cripta_app\frontend\src" />
       <recent name="C:\OpenServer\domains\cripta_app\frontend\src\components" />
       <recent name="C:\OpenServer\domains\cripta_app\frontend\src\store\modules\records" />
       <recent name="C:\OpenServer\domains\cripta_app\frontend\src\store\modules\currencyPairs" />
-      <recent name="C:\OpenServer\domains\cripta_app\frontend\src\store\modules\basic" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\cripta_app" />
+      <recent name="C:\OpenServer\domains\cripta_app\frontend" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -256,6 +208,9 @@
       <workItem from="1616175288900" duration="10958000" />
       <workItem from="1616187984803" duration="283000" />
       <workItem from="1616188329266" duration="789000" />
+      <workItem from="1616264010941" duration="6738000" />
+      <workItem from="1616515283419" duration="598000" />
+      <workItem from="1616523398665" duration="6279000" />
     </task>
     <servers />
   </component>

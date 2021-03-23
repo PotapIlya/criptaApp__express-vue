@@ -37,17 +37,19 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
+        $newPath = $request->image->store('image', 'public');
+
 
         $create = Records::create([
             'currency_pairs_id' => $request->input('currencyPairs'),
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'image' => null,
+            'image' => $newPath,
             'price_start' => $request->input('price_start'),
             'price_end' => $request->input('price_end'),
             'count' => $request->input('count'),
             'profit' => $request->input('profit'),
-            'side' => $request->input('side'),
+            'side' => (boolean) $request->input('side'),
         ]);
         if ( $create )
         {
@@ -57,16 +59,15 @@ class RecordsController extends Controller
         }
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Records  $records
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return mixed
      */
-    public function show(Records $records)
+    public function show($id)
     {
         return response(
-            $records->first()
+            Records::findOrFail($id)
         );
     }
 

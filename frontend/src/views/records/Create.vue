@@ -1,47 +1,150 @@
 <template>
-    <ul style="display: flex; flex-direction: column">
 
-        <li style="display: flex">
-            <span>Валюта</span>
-            <select v-model="form.currencyPairs" name="" id="">
-                <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">
-                    {{ item.name }}
-                </option>
-            </select>
-        </li>
-        <li style="display: flex">
-            <span>Заголовок</span>
-            <input type="text" v-model="form.title">
-        </li>
-        <li style="display: flex">
-            <span>description</span>
-            <textarea name="" v-model="form.description" id="description" cols="30" rows="10"></textarea>
-        </li>
-        <li style="display: flex">
-            <span>price_start</span>
-            <input type="number" v-model="form.price_start">
-        </li>
-        <li style="display: flex">
-            <span>price_end</span>
-            <input type="number" v-model="form.price_end">
-        </li>
-        <li style="display: flex">
-            <span>count</span>
-            <input type="number" v-model="form.count">
-        </li>
-        <li style="display: flex">
-            <span>profit</span>
-            <input type="number" v-model="form.profit">
-        </li>
-        <li style="display: flex">
-            <span>side</span>
-            <input type="text" v-model="form.side">
-        </li>
+    <div class="mb-5 pb-5 d-flex justify-content-between">
+
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Картинка</label>
+                <input
+                    @change="uploadImage"
+                    type="file" class="form-control" id="inputGroupFile01">
+            </div>
+
+            <div v-if="dataPreloadImage">
+                <div>
+                    <img class="w-100" :src="dataPreloadImage" alt="">
+                </div>
+                <button @click="deleteDataPreloadImage" class="btn btn-danger w-100">Очистить</button>
+
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Заголовок</label>
+                <input type="text" class="form-control" id="inputEmail4">
+            </div>
 
 
+            <div class="input-group col-md-6">
+                <select class="form-select flex-grow-1" id="inputGroupSelect01">
+                    <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">
+                        {{ item.name }}
+                    </option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect01">
+                    Валютная пара
+                </label>
+            </div>
 
-        <button @click="send">Send</button>
-    </ul>
+            <div class="input-group col-12 my-3 h-50">
+                <span class="input-group-text">Описание</span>
+                <textarea class="form-control h-100" aria-label="With textarea"></textarea>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="input-group col-12 px-0 mb-3">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">Цена входа</span>
+                    <input type="number"  v-model="form.price_start" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <div class="input-group col-12 px-0">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">Цена выхода</span>
+                    <input type="number"  v-model="form.price_end" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="input-group col-12 px-0 mb-3">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">Кол-во</span>
+                    <input type="number"  v-model="form.count" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+                <div class="input-group col-12 px-0">
+                    <span class="input-group-text">$</span>
+                    <span class="input-group-text">Профит (%)</span>
+                    <input type="number"  v-model="form.profit" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
+            </div>
+
+
+            <div class="col-md-12 ml-4 mt-2">
+                <div class="form-check col-12 px-0">
+                    <input v-model="form.side" value="true" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        &uarr;
+                    </label>
+                </div>
+                <div class="form-check col-12 px-0">
+                    <input v-model="form.side" value="false" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        &darr;
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="col-12 mt-3 d-block">
+                <button @click="send" type="submit" class="btn btn-primary">Создать</button>
+            </div>
+        </div>
+    </div>
+
+
+<!--    <ul style="display: flex; flex-direction: column">-->
+
+<!--        <li style="display: flex">-->
+<!--            <span>Валюта</span>-->
+<!--            <select v-model="form.currencyPairs" name="" id="">-->
+<!--                <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">-->
+<!--                    {{ item.name }}-->
+<!--                </option>-->
+<!--            </select>-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>Заголовок</span>-->
+<!--            <input type="text" v-model="form.title">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>Image</span>-->
+<!--            <input-->
+<!--                type="file"-->
+<!--                @change="uploadImage">-->
+<!--            <input type="file" @change="uploadImage($event.target.name, $event.target.files)">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>description</span>-->
+<!--            <textarea name="" v-model="form.description" id="description" cols="30" rows="10"></textarea>-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>price_start</span>-->
+<!--            <input type="number" v-model="form.price_start">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>price_end</span>-->
+<!--            <input type="number" v-model="form.price_end">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>count</span>-->
+<!--            <input type="number" v-model="form.count">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>profit</span>-->
+<!--            <input type="number" v-model="form.profit">-->
+<!--        </li>-->
+<!--        <li style="display: flex">-->
+<!--            <span>side</span>-->
+<!--            <input type="text" v-model="form.side">-->
+<!--        </li>-->
+
+
+
+<!--        <button @click="send">Send</button>-->
+<!--    </ul>-->
 </template>
 
 <script>
@@ -55,17 +158,16 @@ export default {
             currencyPairs: null,
             title: '',
             description: '',
-            image: '',
-            price_start: '',
-            price_end: '',
+            image: null,
+            price_start: 0,
+            price_end: 0,
             count: '',
             profit: '',
             side: false,
         },
         // END FORM
 
-        arrayCurrencyPairs: [],
-
+        dataPreloadImage: null,
 
     }),
     computed: {
@@ -79,13 +181,34 @@ export default {
            this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS')
         }
     },
-    mounted() {
-        // this.currencyPairs = this.GET_ARRAY_ITEMS[0].id
+    mounted()
+    {
+
     },
 
     methods:{
-        send(){
-            this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
+        deleteDataPreloadImage(){
+            this.form.image = null;
+            this.dataPreloadImage = null;
+        },
+        uploadImage(event)
+        {
+            this.form.image = event.target[0];
+
+            const input = event.target;
+            if (input.files && input.files[0]) {
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.dataPreloadImage = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0])
+            }
+        },
+        send()
+        {
+            console.log(this.form.side)
+            // this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
         }
 
     }
