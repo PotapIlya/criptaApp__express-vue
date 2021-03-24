@@ -8,6 +8,7 @@ import RecordsShow from './../views/records/Show'
 
 import currencyPairsIndex from './../views/currencyPairs/Index'
 import currencyPairsCreate from './../views/currencyPairs/Create'
+import currencyPairsShow from './../views/currencyPairs/Show'
 
 const routes = [
 
@@ -19,6 +20,7 @@ const routes = [
 
     { path: '/currencyPairs',  name: 'currencyPairsIndex',  component: currencyPairsIndex},
     { path: '/currencyPairs/create',  name: 'currencyPairsCreate',  component: currencyPairsCreate},
+    { path: '/currencyPairs/:id',  name: 'currencyPairsShow',  component: currencyPairsShow},
 
 
     // { path: '*', redirect: '/' },

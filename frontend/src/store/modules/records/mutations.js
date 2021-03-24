@@ -5,7 +5,8 @@ export default {
     {
         axios.get( 'http://127.0.0.1:8000/api/records')
             .then(res => {
-                state.arrayItems = res.data;
+                console.log(res.data)
+                state.arrayItems = res.data.data;
             })
             .catch(error => {
                 console.log(error.body)

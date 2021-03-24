@@ -5,12 +5,36 @@
             Add
         </router-link>
 
-        <ul v-if="GET_ARRAY_ITEMS.length">
-            <li v-for="item in GET_ARRAY_ITEMS"
-            :key="item.id">
-                {{ item.name }}
-            </li>
-        </ul>
+
+
+        <table
+            v-if="GET_ARRAY_ITEMS.length"
+            class="table table-hover"
+        >
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr
+                v-for="item in GET_ARRAY_ITEMS"
+                :key="item.id"
+            >
+                <td> {{ item.id }}</td>
+                <td> {{ item.name }}</td>
+                <td>
+                    <router-link class="btn btn-info" :to="'/currencyPairs/'+item.id ">
+                        Show
+                    </router-link>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
 
     </div>
 </template>

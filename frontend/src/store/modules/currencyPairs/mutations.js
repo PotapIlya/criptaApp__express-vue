@@ -27,5 +27,16 @@ export default {
             .catch(error => {
                 console.log(error.body)
             })
+    },
+    SHOW_AXIOS: (state, id) =>
+    {
+        axios.get('http://127.0.0.1:8000/api/currencyPairs/'+id)
+            .then(res =>
+            {
+                state.showItem = res.data;
+            })
+            .catch(error => {
+                console.log(error.body)
+            })
     }
 }

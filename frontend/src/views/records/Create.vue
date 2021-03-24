@@ -23,12 +23,13 @@
 
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Заголовок</label>
-                <input type="text" class="form-control" id="inputEmail4">
+                <input v-model="form.title" type="text" class="form-control" id="inputEmail4">
             </div>
 
 
             <div class="input-group col-md-6">
-                <select class="form-select flex-grow-1" id="inputGroupSelect01">
+                <select v-model="form.currencyPairs"
+                        class="form-select flex-grow-1" id="inputGroupSelect01">
                     <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">
                         {{ item.name }}
                     </option>
@@ -40,7 +41,7 @@
 
             <div class="input-group col-12 my-3 h-50">
                 <span class="input-group-text">Описание</span>
-                <textarea class="form-control h-100" aria-label="With textarea"></textarea>
+                <textarea v-model="form.description" class="form-control h-100" aria-label="With textarea"></textarea>
             </div>
 
 
@@ -159,10 +160,10 @@ export default {
             title: '',
             description: '',
             image: null,
-            price_start: 0,
-            price_end: 0,
-            count: '',
-            profit: '',
+            price_start: null,
+            price_end: null,
+            count: null,
+            profit: null,
             side: false,
         },
         // END FORM
@@ -191,24 +192,28 @@ export default {
             this.form.image = null;
             this.dataPreloadImage = null;
         },
-        uploadImage(event)
+        showPreloaderImage(file)
         {
-            this.form.image = event.target[0];
-
-            const input = event.target;
-            if (input.files && input.files[0]) {
-
+            if (file)
+            {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     this.dataPreloadImage = e.target.result;
                 }
-                reader.readAsDataURL(input.files[0])
+                reader.readAsDataURL(file)
             }
+        },
+        uploadImage(event)
+        {
+            const file = event.target.files[0];
+
+            this.form.image = file;
+            this.showPreloaderImage(file);
+
         },
         send()
         {
-            console.log(this.form.side)
-            // this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
+            this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
         }
 
     }

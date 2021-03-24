@@ -37,6 +37,9 @@ export default {
     async mounted()
     {
         this.$store.dispatch('records/ACTION_SHOW_SEND_AXIOS', this.$route.params.id).then( () => {
+            // setTimeout(() => {
+            //     console.log(this.GET_SHOW_ITEM)
+            // }, 500)
             this.loadind = true;
             this.item = this.GET_SHOW_ITEM
         })

@@ -57,7 +57,9 @@ class CurrencyPairController extends Controller
      */
     public function show($id)
     {
-       return $id;
+        return response(
+            CurrencyPair::findOrFail($id)
+        );
     }
 
     /**

@@ -15,7 +15,8 @@ class RecordsController extends Controller
     public function index()
     {
         return response(
-            Records::all()
+//            Records::take(5)->get()
+            Records::paginate(5)
         );
     }
 
