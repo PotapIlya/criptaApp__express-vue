@@ -16,7 +16,7 @@ class RecordsController extends Controller
     {
         return response(
 //            Records::take(5)->get()
-            Records::paginate(5)
+            Records::paginate(10)
         );
     }
 

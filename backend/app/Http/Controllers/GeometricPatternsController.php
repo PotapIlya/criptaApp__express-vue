@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CurrencyPair;
+use App\Models\GeometricPatterns;
 use Illuminate\Http\Request;
 
-class CurrencyPairController extends Controller
+class GeometricPatternsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CurrencyPairController extends Controller
     public function index()
     {
         return response(
-            CurrencyPair::all()
+            GeometricPatterns::all()
         );
     }
 
@@ -37,8 +37,11 @@ class CurrencyPairController extends Controller
      */
     public function store(Request $request)
     {
-        $create = CurrencyPair::create([
-            'name' => $request->input('data')
+        $newPath = $request->image->store('image', 'public');
+
+        $create = GeometricPatterns::create([
+            'name' => $request->input('name'),
+            'image' => $newPath,
         ]);
         if ( $create )
         {
@@ -46,29 +49,28 @@ class CurrencyPairController extends Controller
         } else{
             return response('error')->setStatusCode(500);
         }
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CurrencyPair  $currencyPair
+     * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
     {
         return response(
-            CurrencyPair::findOrFail($id)
+            GeometricPatterns::findOrFail($id)
         );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CurrencyPair  $currencyPair
+     * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
-    public function edit(CurrencyPair $currencyPair)
+    public function edit(GeometricPatterns $geometricPatterns)
     {
         //
     }
@@ -77,10 +79,10 @@ class CurrencyPairController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CurrencyPair  $currencyPair
+     * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CurrencyPair $currencyPair)
+    public function update(Request $request, GeometricPatterns $geometricPatterns)
     {
         //
     }
@@ -88,10 +90,10 @@ class CurrencyPairController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CurrencyPair  $currencyPair
+     * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CurrencyPair $currencyPair)
+    public function destroy(GeometricPatterns $geometricPatterns)
     {
         //
     }

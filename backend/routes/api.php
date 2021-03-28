@@ -26,5 +26,6 @@ Route::group([
 {
     Route::resource('/records', 'RecordsController');
     Route::resource('/currencyPairs', 'CurrencyPairController');
+    Route::resource('/geometricPatterns', 'GeometricPatternsController');
 });
 

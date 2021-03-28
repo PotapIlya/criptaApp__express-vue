@@ -27,10 +27,10 @@
             </div>
 
 
-            <div class="input-group col-md-6">
+            <div v-if="arrayCurrencyPairs.length" class="input-group col-md-6">
                 <select v-model="form.currencyPairs"
                         class="form-select flex-grow-1" id="inputGroupSelect01">
-                    <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">
+                    <option v-for="item in arrayCurrencyPairs" :key="item.id" :value="item.id">
                         {{ item.name }}
                     </option>
                 </select>
@@ -95,61 +95,9 @@
         </div>
     </div>
 
-
-<!--    <ul style="display: flex; flex-direction: column">-->
-
-<!--        <li style="display: flex">-->
-<!--            <span>Валюта</span>-->
-<!--            <select v-model="form.currencyPairs" name="" id="">-->
-<!--                <option v-for="item in GET_ARRAY_ITEMS" :key="item.id" :value="item.id">-->
-<!--                    {{ item.name }}-->
-<!--                </option>-->
-<!--            </select>-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>Заголовок</span>-->
-<!--            <input type="text" v-model="form.title">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>Image</span>-->
-<!--            <input-->
-<!--                type="file"-->
-<!--                @change="uploadImage">-->
-<!--            <input type="file" @change="uploadImage($event.target.name, $event.target.files)">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>description</span>-->
-<!--            <textarea name="" v-model="form.description" id="description" cols="30" rows="10"></textarea>-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>price_start</span>-->
-<!--            <input type="number" v-model="form.price_start">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>price_end</span>-->
-<!--            <input type="number" v-model="form.price_end">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>count</span>-->
-<!--            <input type="number" v-model="form.count">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>profit</span>-->
-<!--            <input type="number" v-model="form.profit">-->
-<!--        </li>-->
-<!--        <li style="display: flex">-->
-<!--            <span>side</span>-->
-<!--            <input type="text" v-model="form.side">-->
-<!--        </li>-->
-
-
-
-<!--        <button @click="send">Send</button>-->
-<!--    </ul>-->
 </template>
 
 <script>
-import axios from 'axios'
 import {mapActions, mapGetters} from 'vuex'
 export default {
     name: "RecordsCreate",
@@ -168,23 +116,28 @@ export default {
         },
         // END FORM
 
+        arrayCurrencyPairs: [],
         dataPreloadImage: null,
 
     }),
     computed: {
-        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS']),
-
+        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS', 'GET_arrayItemsStatus']),
 
         ...mapActions('currencyPairs', ['ACTION_GET_SEND_AXIOS'])
     },
-    created() {
-        if ( this.GET_ARRAY_ITEMS.length === 0 ){
-           this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS')
-        }
-    },
     mounted()
     {
-
+        if ( this.GET_arrayItemsStatus )
+        {
+           this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS').then( () =>
+           {
+               this.arrayCurrencyPairs = this.GET_ARRAY_ITEMS;
+               this.form.currencyPairs = this.GET_ARRAY_ITEMS[0].id
+           })
+        } else{
+            this.arrayCurrencyPairs = this.GET_ARRAY_ITEMS;
+            this.form.currencyPairs = this.GET_ARRAY_ITEMS[0].id
+        }
     },
 
     methods:{

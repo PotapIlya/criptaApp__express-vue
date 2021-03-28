@@ -24,10 +24,10 @@ export default {
         {
             if ( this.name !== null && this.name !== '' )
             {
-                this.$store.dispatch('currencyPairs/ACTION_CREATE_SEND_AXIOS', this.input)
-                this.input = '';
+                this.$store.dispatch('currencyPairs/ACTION_CREATE_SEND_AXIOS', this.input).then( () => {
+                  this.input = '';
+                })
             }
-
         }
     }
 }

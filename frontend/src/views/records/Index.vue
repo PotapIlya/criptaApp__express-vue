@@ -6,7 +6,7 @@
         </router-link>
 
         <table
-            v-if="GET_ARRAY_ITEMS.length"
+            v-if="arrayItems.length"
             class="table table-hover"
         >
             <thead>
@@ -20,7 +20,7 @@
             <tbody>
 
                 <tr
-                    v-for="item in GET_ARRAY_ITEMS"
+                    v-for="item in arrayItems"
                     :key="item.id"
                 >
                     <th scope="row">{{ item.id }}</th>
@@ -36,39 +36,67 @@
             </tbody>
         </table>
 
-        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+
+        <nav v-if="arrayLinks.length"
+             class="d-flex justify-content-center" aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
+
+
+                <li
+                    v-for="item in arrayLinks"
+                    :class="{ 'active' : item.active }"
+                    class="page-item"
+                    @click="paginate(item.url)"
+                >
+                    <!--                <a class="page-link" href="#">{{ // linksList.first.label }}</a>-->
+                    <a class="page-link" href="#">{{ item.label }}</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+
+
             </ul>
         </nav>
+<!--        <Paginate-->
+<!--            :arrayLinks="arrayLinks"-->
+<!--        />-->
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import Paginate from "@/components/records/Paginate";
 export default {
     name: "RecordsIndex",
+    components: { Paginate },
     data: () => ({
+        arrayItems: [],
+        arrayLinks: [],
 
     }),
     computed:{
-        ...mapGetters('records', ['GET_ARRAY_ITEMS'])
+        ...mapGetters('records', ['GET_ARRAY_ITEMS', 'GET_arrayItemsStatus', 'GET_ARRAY_LINKS'])
     },
-    created() {
-        if ( this.GET_ARRAY_ITEMS.length === 0 ){
-            this.$store.dispatch('records/ACTION_GET_SEND_AXIOS')
+    watch: {
+        GET_ARRAY_ITEMS(){
+           this.updateDataFromVuex();
+        }
+    },
+    methods:{
+        updateDataFromVuex(){
+            this.arrayItems = this.GET_ARRAY_ITEMS;
+            this.arrayLinks = this.GET_ARRAY_LINKS;
+        },
+        paginate(url){
+            this.$store.dispatch('records/ACTION_PAGINATE', url)
+        }
+    },
+    mounted()
+    {
+        if ( this.GET_arrayItemsStatus ){
+            this.$store.dispatch('records/ACTION_GET_SEND_AXIOS').then( () => {
+                this.updateDataFromVuex();
+            })
+        } else {
+            this.updateDataFromVuex();
         }
     }
 }

@@ -4,11 +4,7 @@ export default {
     GET_ARRAY_ITEMS: (state, data) =>
     {
         state.arrayItems = data;
-        if (data.length){
-            state.arrayItemsStatus = false;
-        } else{
-            state.arrayItemsStatus = true
-        }
+        state.arrayItemsStatus = !data.length;
         /*
         *
         if (res.data.length){
@@ -21,10 +17,7 @@ export default {
     },
     CREATE_ITEM: (state, data) =>
     {
-        if ( !state.arrayItemsStatus )
-        {
-            state.arrayItems.push(data);
-        }
+        state.arrayItems.push(data);
     },
     GET_SHOW_ITEM: (state, data) =>
     {

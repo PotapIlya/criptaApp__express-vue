@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h1>Валюты</h1>
-        <router-link to="/currencyPairs/create">
+        <h1>Паттерны</h1>
+        <router-link to="/geometricPatterns/create">
             Add
         </router-link>
-
 
 
         <table
@@ -27,7 +26,7 @@
                 <td> {{ item.id }}</td>
                 <td> {{ item.name }}</td>
                 <td>
-                    <router-link class="btn btn-info" :to="'/currencyPairs/'+item.id ">
+                    <router-link class="btn btn-info" :to="'/geometricPatterns/'+item.id ">
                         Show
                     </router-link>
                 </td>
@@ -42,15 +41,15 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    name: "currencyPairsIndex",
+    name: "geometricPatternsIndex",
     data: () => ({
         input: '',
         arrayItems: [],
     }),
     computed: {
-        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS', 'GET_arrayItemsStatus']),
+        ...mapGetters('geometricPatterns', ['GET_ARRAY_ITEMS', 'GET_arrayItemsStatus']),
 
-        ...mapActions('currencyPairs', ['ACTION_GET_SEND_AXIOS'])
+        ...mapActions('geometricPatterns', ['ACTION_GET_SEND_AXIOS'])
     },
     methods:{
 
@@ -58,7 +57,7 @@ export default {
     created()
     {
         if ( this.GET_arrayItemsStatus ){
-            this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS').then( () => {
+            this.$store.dispatch('geometricPatterns/ACTION_GET_SEND_AXIOS').then( () => {
                 this.arrayItems = this.GET_ARRAY_ITEMS
             })
         } else{
@@ -67,4 +66,3 @@ export default {
     },
 }
 </script>
-

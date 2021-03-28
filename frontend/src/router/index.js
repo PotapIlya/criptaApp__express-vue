@@ -9,6 +9,9 @@ import RecordsShow from './../views/records/Show'
 import currencyPairsIndex from './../views/currencyPairs/Index'
 import currencyPairsCreate from './../views/currencyPairs/Create'
 import currencyPairsShow from './../views/currencyPairs/Show'
+import geometricPatternsIndex from './../views/geometricPatterns/Index'
+import geometricPatternsCreate from './../views/geometricPatterns/Create'
+import geometricPatternsShow from './../views/geometricPatterns/Show'
 
 const routes = [
 
@@ -22,6 +25,10 @@ const routes = [
     { path: '/currencyPairs/create',  name: 'currencyPairsCreate',  component: currencyPairsCreate},
     { path: '/currencyPairs/:id',  name: 'currencyPairsShow',  component: currencyPairsShow},
 
+
+    { path: '/geometricPatterns',  name: 'geometricPatternsIndex',  component: geometricPatternsIndex},
+    { path: '/geometricPatterns/create',  name: 'geometricPatternsCreate',  component: geometricPatternsCreate},
+    { path: '/geometricPatterns/:id',  name: 'geometricPatternsShow',  component: geometricPatternsShow},
 
     // { path: '*', redirect: '/' },
 
