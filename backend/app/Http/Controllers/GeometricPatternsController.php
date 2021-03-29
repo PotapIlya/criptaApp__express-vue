@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GeometricPatterns;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GeometricPatternsController extends Controller
 {
@@ -37,7 +38,7 @@ class GeometricPatternsController extends Controller
      */
     public function store(Request $request)
     {
-        $newPath = $request->image->store('image', 'public');
+        $newPath = $request->image->store('geometricPatterns', 'public');
 
         $create = GeometricPatterns::create([
             'name' => $request->input('name'),
@@ -82,9 +83,32 @@ class GeometricPatternsController extends Controller
      * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GeometricPatterns $geometricPatterns)
+    public function update(Request $request, int $id)
     {
-        //
+        return response(
+            $request->all()
+        );
+
+        $item = GeometricPatterns::findOrFail($id);
+        if ($item)
+        {
+            // image
+            if ( $request->input('data')['image'] ){
+                Storage::disk('public')->delete($item->image);
+            }
+
+            // name
+            if ( $item->update(['name' => $request->input('data')['name']]) )
+            {
+                return response(
+                    $item
+                );
+            } else{
+                return response('error')->setStatusCode(500);
+            }
+        } else{
+            return response('error')->setStatusCode(500);
+        }
     }
 
     /**

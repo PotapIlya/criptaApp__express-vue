@@ -27,16 +27,15 @@ export default {
         formData.append('count', form.count);
         formData.append('profit', form.profit);
         formData.append('side', form.side);
+        formData.append('geometric_patterns_id', form.geometric_patterns_id);
 
         axios.post('http://127.0.0.1:8000/api/records', formData, config)
             .then(res =>
             {
-                if ( state.arrayItems.length !== 0 ){
-                    context.commit('CREATE_ITEM', res.data)
-                }
+                context.commit('CREATE_ITEM', res.data)
             })
             .catch(error => {
-                console.log(error.body, 'error')
+                console.log(error.response, 'error')
             })
 
 

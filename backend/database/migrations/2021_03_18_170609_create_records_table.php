@@ -17,6 +17,7 @@ class CreateRecordsTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('currency_pairs_id');
+            $table->unsignedBigInteger('geometric_patterns_id');
 
             $table->string('title', 255)->default(null)->nullable();
             $table->text('description')->default(null)->nullable();
@@ -30,7 +31,8 @@ class CreateRecordsTable extends Migration
             $table->string('profit', 10)->default(0);
             $table->boolean('side')->default(0);
 
-            $table->foreign('currency_pairs_id')->references('id')->on('currency_pairs')->onDelete('cascade');
+            $table->foreign('currency_pairs_id')->references('id')->on('currency_pairs');
+            $table->foreign('geometric_patterns_id')->references('id')->on('geometric_patterns');
 
             $table->timestamps();
         });

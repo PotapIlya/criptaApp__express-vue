@@ -2,6 +2,7 @@
     <div id="app">
         <div class="container">
             <Nav />
+            <Alert />
             <router-view></router-view>
         </div>
     </div>
@@ -9,10 +10,12 @@
 
 <script>
     import Nav from './components/basic/Nav'
+    import Alert from './components/basic/Alert'
     export default {
         name: 'frontend',
         components:{
-            Nav
+            Nav,
+            Alert
         },
 
     }

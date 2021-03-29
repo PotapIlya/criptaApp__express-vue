@@ -80,9 +80,22 @@ class CurrencyPairController extends Controller
      * @param  \App\Models\CurrencyPair  $currencyPair
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CurrencyPair $currencyPair)
+    public function update(Request $request, int $id)
     {
-        //
+        $item = CurrencyPair::findOrFail($id);
+        if ($item)
+        {
+            if ( $item->update(['name' => $request->input('data')['name']]) )
+            {
+                return response(
+                    $item
+                );
+            } else{
+                return response('error')->setStatusCode(500);
+            }
+        } else{
+            return response('error')->setStatusCode(500);
+        }
     }
 
     /**
@@ -91,8 +104,12 @@ class CurrencyPairController extends Controller
      * @param  \App\Models\CurrencyPair  $currencyPair
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CurrencyPair $currencyPair)
+    public function destroy(int $id)
     {
-        //
+        if ( CurrencyPair::destroy($id) ){
+            return response(['success' => $id]);
+        } else{
+            return response('error')->setStatusCode(500);
+        }
     }
 }

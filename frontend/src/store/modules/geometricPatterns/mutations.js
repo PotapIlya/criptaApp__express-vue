@@ -15,12 +15,32 @@ export default {
         * */
         // state.arrayItemsStatus = !!data.length;
     },
+    GET_SHOW_ITEM: (state, data) =>
+    {
+        state.showItem = data;
+    },
     CREATE_ITEM: (state, data) =>
     {
         state.arrayItems.push(data);
     },
-    GET_SHOW_ITEM: (state, data) =>
+    UPDATE_ITEM: (state, data) =>
     {
-        state.showItem = data;
-    }
+        state.arrayItems.forEach( (item, index) => {
+            if (item.id === data.id){
+                state.arrayItems.splice(index, 1, data)
+                return true;
+            }
+        })
+        // state.showItem = data;
+    },
+    DELETE_ITEM: (state, id) =>
+    {
+        state.arrayItems.forEach( (item, index) => {
+            if (item.id === id){
+                state.arrayItems.splice(index, 1)
+                return true;
+            }
+        })
+        state.showItem = null;
+    },
 }

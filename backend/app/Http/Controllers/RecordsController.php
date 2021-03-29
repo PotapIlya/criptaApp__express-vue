@@ -38,11 +38,13 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
-        $newPath = $request->image->store('image', 'public');
+
+        $newPath = $request->image->store('records', 'public');
 
 
         $create = Records::create([
             'currency_pairs_id' => $request->input('currencyPairs'),
+            'geometric_patterns_id' => $request->input('geometric_patterns_id'),
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'image' => $newPath,

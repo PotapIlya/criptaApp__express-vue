@@ -3,35 +3,27 @@
       312321
         <h1 @click="click">12 3</h1>
     </div>
+
+    <button @click="error">error</button>
+
 </template>
 
 <script>
-    import { mapState, mapGetters, mapActions } from 'vuex'
+    import { mapGetters } from 'vuex'
+
 
     export default {
         name: "Index",
         computed:{
-          // ...mapState({
-          //   userAvatar: state => state.user.userAvatar
-          // }),
-          ...mapGetters('user', ['getActiveUsers'])
-          // ...mapActions("user", ["getUserInfo"]),
+
         },
         methods:{
-            click(){
-              console.log( this.getActiveUsers )
+            error(){
+                this.$store.dispatch('basic/SEND_MESSAGE_ALERT', 'dawdaw')
             }
         },
-        mounted()
-        {
-          // this.$store.commit('user/setUserInfo', 'POTAP')
-          // this.$store.dispatch('user/getUserInfo')
-          // console.log( this.getActiveUsers )
-          // this.getUserInfo
-          // this.$store.dispatch('user/getUserInfo')
-
-
-
+        mounted() {
+            //
         }
     }
 </script>

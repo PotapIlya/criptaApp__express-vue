@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe7f83af-4d7d-4153-a699-169dc42b5c53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/records/Paginate.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/geometricPatterns/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/geometricPatterns/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/geometricPatterns/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/geometricPatterns/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store/modules/geometricPatterns/state.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/geometricPatterns/Create.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/geometricPatterns/Index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/geometricPatterns/Show.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/CurrencyPairController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/CurrencyPairController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/RecordsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/RecordsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/basic/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/basic/Nav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2021_03_18_170609_create_records_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/migrations/2021_03_18_170609_create_records_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/basic/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/basic/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/getters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/currencyPairs/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/records/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/records/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/getters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/records/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/records/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/records/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/currencyPairs/Show.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/geometricPatterns/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/geometricPatterns/Show.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/records/Show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/records/Show.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +219,7 @@
       <workItem from="1616776463406" duration="12000" />
       <workItem from="1616778019187" duration="1676000" />
       <workItem from="1616965217937" duration="1342000" />
+      <workItem from="1617028810497" duration="8955000" />
     </task>
     <servers />
   </component>

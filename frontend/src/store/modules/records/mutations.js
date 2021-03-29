@@ -14,7 +14,9 @@ export default {
         }
     },
     CREATE_ITEM: (state, data) => {
-        state.arrayItems.push(data)
+        if (state.arrayItems.length !== 0){
+            state.arrayItems.push(data)
+        }
     },
     GET_SHOW_ITEM: (state, data) =>
     {

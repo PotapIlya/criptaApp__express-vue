@@ -22,7 +22,7 @@ export default {
     methods:{
         send()
         {
-            if ( this.name !== null && this.name !== '' )
+            if ( this.name !== '' )
             {
                 this.$store.dispatch('currencyPairs/ACTION_CREATE_SEND_AXIOS', this.input).then( () => {
                   this.input = '';

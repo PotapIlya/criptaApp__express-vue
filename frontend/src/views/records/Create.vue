@@ -113,6 +113,7 @@ export default {
             count: null,
             profit: null,
             side: false,
+            geometric_patterns_id: 1,
         },
         // END FORM
 
