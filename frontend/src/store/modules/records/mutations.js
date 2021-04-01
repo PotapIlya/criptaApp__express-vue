@@ -3,15 +3,16 @@ import axios from "axios";
 export default {
     GET_ARRAY_ITEMS: (state, data) =>
     {
-        state.arrayItems = data.data;
-        state.arrayLinks = data.links;
+        state.arrayItems = data;
+        // state.arrayItems = data.data;
+        // state.arrayLinks = data.links;
+        state.arrayLinks = [];
 
-        // console.log(data.data)
-        if (data.data.length){
-            state.arrayItemsStatus = false;
-        } else{
-            state.arrayItemsStatus = true
-        }
+        // if (data.data.length){
+        //     state.arrayItemsStatus = false;
+        // } else{
+        //     state.arrayItemsStatus = true
+        // }
     },
     CREATE_ITEM: (state, data) => {
         if (state.arrayItems.length !== 0){

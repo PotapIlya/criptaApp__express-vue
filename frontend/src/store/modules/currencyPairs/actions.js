@@ -4,6 +4,7 @@ export default
 {
     ACTION_GET_SEND_AXIOS(context)
     {
+        // http://127.0.0.1:8000/api/currencyPairs
         return axios.get('http://127.0.0.1:8000/api/currencyPairs')
             .then(res =>
             {
@@ -46,6 +47,7 @@ export default
             .then(res =>
             {
                 context.commit('UPDATE_ITEM', res.data)
+                return res;
             })
             .catch(error => {
                 console.log(error.body)
@@ -53,9 +55,7 @@ export default
     },
     ACTION_DELETE_SEND_AXIOS(context, data)
     {
-        return axios.delete('http://127.0.0.1:8000/api/currencyPairs/'+data.id, {
-            data
-        })
+        return axios.delete('http://127.0.0.1:8000/api/currencyPairs/'+data.id)
             .then(res =>
             {
                 if (res.data.success){

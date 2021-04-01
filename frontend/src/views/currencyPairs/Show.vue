@@ -52,8 +52,10 @@ export default {
         updateItem(){
            if (this.form.name !== '')
            {
-               this.$store.dispatch('currencyPairs/ACTION_UPDATE_SEND_AXIOS', this.form).then( () => {
-                   this.input = '';
+               this.$store.dispatch('currencyPairs/ACTION_UPDATE_SEND_AXIOS', this.form).then( (res) => {
+                   if ( res.status === 200 ){
+                       this.$store.dispatch('basic/SEND_MESSAGE_ALERT', 'Success')
+                   }
                })
            }
         },

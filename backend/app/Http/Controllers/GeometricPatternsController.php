@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GeometricPatterns;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use function GuzzleHttp\Psr7\uri_for;
 
 class GeometricPatternsController extends Controller
 {
@@ -15,6 +16,8 @@ class GeometricPatternsController extends Controller
      */
     public function index()
     {
+        // select * from 'geometricPatterns'
+        //http://127.0.0.1:8000/api/currencyPairs
         return response(
             GeometricPatterns::all()
         );
@@ -38,15 +41,48 @@ class GeometricPatternsController extends Controller
      */
     public function store(Request $request)
     {
-        $newPath = $request->image->store('geometricPatterns', 'public');
-
-        $create = GeometricPatterns::create([
-            'name' => $request->input('name'),
-            'image' => $newPath,
-        ]);
-        if ( $create )
+        if ( $request->input('update') )
         {
-            return response($create);
+            return $this->updatePattern( $request->all() );
+        }
+        else
+        {
+            $newPath = $request->image->store('geometricPatterns', 'public');
+            $create = GeometricPatterns::create([
+                'name' => $request->input('name'),
+                'image' => $newPath,
+            ]);
+            if ( $create )
+            {
+                return response($create);
+            } else{
+                return response('error')->setStatusCode(500);
+            }
+        }
+    }
+    private function updatePattern(array $data)
+    {
+        $item = GeometricPatterns::findOrFail($data['id']);
+        if ($item)
+        {
+            // image
+            if ( $data['image'] !== 'null' ){
+                Storage::disk('public')->delete($item->image);
+
+                $newPath = $data['image']->store('geometricPatterns', 'public');
+                if ( !$item->update(['image' => $newPath]) )
+                {
+                    return response('error')->setStatusCode(500);
+                }
+            }
+
+            // name
+            if ( $item->update(['name' => $data['name']]) )
+            {
+                return response( $item );
+            } else{
+                return response('error')->setStatusCode(500);
+            }
         } else{
             return response('error')->setStatusCode(500);
         }
@@ -89,26 +125,26 @@ class GeometricPatternsController extends Controller
             $request->all()
         );
 
-        $item = GeometricPatterns::findOrFail($id);
-        if ($item)
-        {
-            // image
-            if ( $request->input('data')['image'] ){
-                Storage::disk('public')->delete($item->image);
-            }
-
-            // name
-            if ( $item->update(['name' => $request->input('data')['name']]) )
-            {
-                return response(
-                    $item
-                );
-            } else{
-                return response('error')->setStatusCode(500);
-            }
-        } else{
-            return response('error')->setStatusCode(500);
-        }
+//        $item = GeometricPatterns::findOrFail($id);
+//        if ($item)
+//        {
+//            // image
+//            if ( $request->input('data')['image'] ){
+//                Storage::disk('public')->delete($item->image);
+//            }
+//
+//            // name
+//            if ( $item->update(['name' => $request->input('data')['name']]) )
+//            {
+//                return response(
+//                    $item
+//                );
+//            } else{
+//                return response('error')->setStatusCode(500);
+//            }
+//        } else{
+//            return response('error')->setStatusCode(500);
+//        }
     }
 
     /**
@@ -117,8 +153,12 @@ class GeometricPatternsController extends Controller
      * @param  \App\Models\GeometricPatterns  $geometricPatterns
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GeometricPatterns $geometricPatterns)
+    public function destroy(int $id)
     {
-        //
+        if ( GeometricPatterns::destroy($id) ){
+            return response(['success' => $id]);
+        } else{
+            return response('error')->setStatusCode(500);
+        }
     }
 }

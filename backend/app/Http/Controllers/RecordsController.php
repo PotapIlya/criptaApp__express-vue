@@ -15,8 +15,7 @@ class RecordsController extends Controller
     public function index()
     {
         return response(
-//            Records::take(5)->get()
-            Records::paginate(10)
+            Records::all()->groupBy(['month', 'day'])
         );
     }
 
@@ -38,6 +37,7 @@ class RecordsController extends Controller
      */
     public function store(Request $request)
     {
+        $day = explode( '-', $request->input('date') );
 
         $newPath = $request->image->store('records', 'public');
 
@@ -53,6 +53,10 @@ class RecordsController extends Controller
             'count' => $request->input('count'),
             'profit' => $request->input('profit'),
             'side' => (boolean) $request->input('side'),
+
+            'day' => $day[2],
+            'month' => $day[1],
+            'year' => $day[0],
         ]);
         if ( $create )
         {

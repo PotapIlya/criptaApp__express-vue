@@ -18,10 +18,6 @@
         <button @click="updateItem">
             update
         </button>
-
-        <h1>
-            При отправке не закидываетв  тело img, приходит пустой массив
-        </h1>
     </div>
 
 </template>
@@ -41,17 +37,28 @@ export default {
             image: null,
         },
         frontImage: null,
-        pathImage: '../../../../backend/public/storage/geometricPatterns/',
     }),
+    watch:{
+        GET_SHOW_ITEM(){
+            this.checkShowItem();
+        }
+    },
     mounted() {
         this.$store.dispatch('geometricPatterns/ACTION_SHOW_SEND_AXIOS', this.$route.params.id).then( () =>
         {
-            this.form.id = this.GET_SHOW_ITEM.id;
-            this.form.name = this.GET_SHOW_ITEM.name;
-            this.frontImage = this.GET_SHOW_ITEM.image;
+            this.checkShowItem();
         })
     },
     methods:{
+        checkShowItem(){
+            if (this.GET_SHOW_ITEM === null){
+                this.$router.push('../geometricPatterns')
+            } else{
+                this.form.id = this.GET_SHOW_ITEM.id;
+                this.form.name = this.GET_SHOW_ITEM.name;
+                this.frontImage = this.GET_SHOW_ITEM.image;
+            }
+        },
         uploadImage(event)
         {
             const file = event.target.files[0];
@@ -62,15 +69,16 @@ export default {
         updateItem(){
             if (this.form.name !== '')
             {
-                this.$store.dispatch('geometricPatterns/ACTION_UPDATE_SEND_AXIOS', this.form).then( () => {
-                    //
+                this.$store.dispatch('geometricPatterns/ACTION_UPDATE_SEND_AXIOS', this.form).then( (res) => {
+                    this.form.name = res.name;
+                    this.frontImage = res.image;
                 })
             }
         },
         deleteItem(){
-            // this.$store.dispatch('geometricPatterns/ACTION_DELETE_SEND_AXIOS', this.form).then( () => {
-            //
-            // })
+            this.$store.dispatch('geometricPatterns/ACTION_DELETE_SEND_AXIOS', this.form).then( () => {
+
+            })
         },
     }
 }

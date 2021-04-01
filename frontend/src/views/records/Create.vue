@@ -39,6 +39,19 @@
                 </label>
             </div>
 
+
+            <div v-if="arrayGeometricPatterns.length" class="input-group col-md-6">
+                <select v-model="form.geometric_patterns_id"
+                        class="form-select flex-grow-1" id="inputGroupSelect02">
+                    <option v-for="item in arrayGeometricPatterns" :key="item.id" :value="item.id">
+                        {{ item.name }}
+                    </option>
+                </select>
+                <label class="input-group-text" for="inputGroupSelect02">
+                    Паттерны
+                </label>
+            </div>
+
             <div class="input-group col-12 my-3 h-50">
                 <span class="input-group-text">Описание</span>
                 <textarea v-model="form.description" class="form-control h-100" aria-label="With textarea"></textarea>
@@ -70,6 +83,11 @@
                     <span class="input-group-text">Профит (%)</span>
                     <input type="number"  v-model="form.profit" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputDate" class="form-label">Дата</label>
+                <input v-model="form.date" type="date" class="form-control" id="inputDate">
             </div>
 
 
@@ -105,6 +123,7 @@ export default {
        // FORM
         form: {
             currencyPairs: null,
+            geometric_patterns_id: null,
             title: '',
             description: '',
             image: null,
@@ -113,35 +132,71 @@ export default {
             count: null,
             profit: null,
             side: false,
-            geometric_patterns_id: 1,
+            date: null
         },
         // END FORM
 
         arrayCurrencyPairs: [],
+        arrayGeometricPatterns: [],
         dataPreloadImage: null,
 
     }),
     computed: {
-        ...mapGetters('currencyPairs', ['GET_ARRAY_ITEMS', 'GET_arrayItemsStatus']),
+        ...mapGetters([
+            'currencyPairs/GET_ARRAY_ITEMS',
+            'currencyPairs/GET_arrayItemsStatus',
+
+            'geometricPatterns/GET_ARRAY_ITEMS',
+            'geometricPatterns/GET_arrayItemsStatus',
+        ]),
 
         ...mapActions('currencyPairs', ['ACTION_GET_SEND_AXIOS'])
     },
     mounted()
     {
-        if ( this.GET_arrayItemsStatus )
+        this.form.date = this.createNowDate();
+
+        if ( this['geometricPatterns/GET_arrayItemsStatus'] )
+        {
+            this.$store.dispatch('geometricPatterns/ACTION_GET_SEND_AXIOS').then( () =>
+            {
+                this.arrayGeometricPatterns = this['geometricPatterns/GET_ARRAY_ITEMS'];
+                this.form.geometric_patterns_id = this['geometricPatterns/GET_ARRAY_ITEMS'][0].id
+            })
+        } else {
+            this.arrayGeometricPatterns = this['geometricPatterns/GET_ARRAY_ITEMS'];
+            this.form.geometric_patterns_id = this['geometricPatterns/GET_ARRAY_ITEMS'][0].id
+        }
+
+        if (  this['currencyPairs/GET_arrayItemsStatus'] )
         {
            this.$store.dispatch('currencyPairs/ACTION_GET_SEND_AXIOS').then( () =>
            {
-               this.arrayCurrencyPairs = this.GET_ARRAY_ITEMS;
-               this.form.currencyPairs = this.GET_ARRAY_ITEMS[0].id
+               this.arrayCurrencyPairs = this['currencyPairs/GET_ARRAY_ITEMS'];
+               this.form.currencyPairs = this['currencyPairs/GET_ARRAY_ITEMS'][0].id
            })
         } else{
-            this.arrayCurrencyPairs = this.GET_ARRAY_ITEMS;
-            this.form.currencyPairs = this.GET_ARRAY_ITEMS[0].id
+            this.arrayCurrencyPairs = this['currencyPairs/GET_ARRAY_ITEMS'];
+            this.form.currencyPairs = this['currencyPairs/GET_ARRAY_ITEMS'][0].id
         }
     },
 
     methods:{
+        createNowDate()
+        {
+            const date = new Date()
+            let day = date.getDate();
+            let month = date.getMonth();
+            const year = date.getFullYear();
+
+            if (String(day).length === 1){
+                day = '0'+day
+            }
+            if (String(month).length === 1){
+                month = '0'+month
+            }
+            return `${year}-${month}-${day}`
+        },
         deleteDataPreloadImage(){
             this.form.image = null;
             this.dataPreloadImage = null;
@@ -167,7 +222,11 @@ export default {
         },
         send()
         {
-            this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form)
+            this.$store.dispatch('records/ACTION_CREATE_SEND_AXIOS', this.form).then( (res) => {
+                if ( res && res.status === 500 ){
+                    this.$store.dispatch('basic/SEND_MESSAGE_ALERT', res.data.message)
+                }
+            } )
         }
 
     }

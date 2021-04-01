@@ -31,6 +31,10 @@ class CreateRecordsTable extends Migration
             $table->string('profit', 10)->default(0);
             $table->boolean('side')->default(0);
 
+            $table->string('day', 5)->default(0);
+            $table->string('month', 5)->default(0);
+            $table->string('year', 5)->default(0);
+
             $table->foreign('currency_pairs_id')->references('id')->on('currency_pairs');
             $table->foreign('geometric_patterns_id')->references('id')->on('geometric_patterns');
 

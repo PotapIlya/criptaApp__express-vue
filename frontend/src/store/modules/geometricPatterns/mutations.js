@@ -21,7 +21,9 @@ export default {
     },
     CREATE_ITEM: (state, data) =>
     {
-        state.arrayItems.push(data);
+        if ( state.arrayItems.length !== 0 ) {
+            state.arrayItems.push(data);
+        }
     },
     UPDATE_ITEM: (state, data) =>
     {

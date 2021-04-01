@@ -6,7 +6,7 @@
         </router-link>
 
         <table
-            v-if="arrayItems.length"
+            v-if="arrayItems"
             class="table table-hover"
         >
             <thead>
@@ -20,17 +20,26 @@
             <tbody>
 
                 <tr
-                    v-for="item in arrayItems"
-                    :key="item.id"
+                    v-for="(items, index) in arrayItems"
+                    :key="index"
                 >
-                    <th scope="row">{{ item.id }}</th>
-                    <td> {{ item.title }}</td>
-                    <td>Otto</td>
-                    <td>
-                        <router-link :to=" '/records/'+item.id ">
-                           Перейти
-                        </router-link>
-                    </td>
+                    <hr color="red">
+
+                    <div v-for="item in items">
+                        <hr color="#000">
+                        <div v-for="x in item">
+                            {{ x.month }} -
+                            {{ x.day }}
+                        </div>
+                    </div>
+<!--                    <th scope="row">{{ item.id }}</th>-->
+<!--                    <td> {{ item.title }}</td>-->
+<!--                    <td>Otto</td>-->
+<!--                    <td>-->
+<!--                        <router-link :to=" '/records/'+item.id ">-->
+<!--                           Перейти-->
+<!--                        </router-link>-->
+<!--                    </td>-->
                 </tr>
 
             </tbody>
@@ -78,6 +87,12 @@ export default {
     watch: {
         GET_ARRAY_ITEMS(){
            this.updateDataFromVuex();
+        },
+        arrayItems()
+        {
+            console.log(
+                this.arrayItems
+            )
         }
     },
     methods:{
