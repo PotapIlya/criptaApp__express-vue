@@ -5,33 +5,59 @@
             Add
         </router-link>
 
-        <table
+        <div
             v-if="arrayItems"
             class="table table-hover"
         >
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
 
-                <tr
-                    v-for="(items, index) in arrayItems"
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="col">#</span>
+                <span class="col">UTC</span>
+                <span class="col">PnL</span>
+                <span class="col">Symbol</span>
+                <span class="col">L/S</span>
+                <span class="col">PnL%</span>
+            </div>
+
+            <div>
+
+                <div
+                    v-for="(arrayItems, index) in arrayItems"
                     :key="index"
+                    class="d-flex flex-column"
                 >
-                    <hr color="red">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="col">
+                            #
+                        </div>
+                        <div class="col">
+                            <button>00 - {{ index }} - 2021</button>
+                        </div>
+                        <div class="col">PnL</div>
+                        <div class="col" >Symbol</div>
+                        <div class="col">L/S</div>
+                        <div class="col">PnL%</div>
+                    </div>
 
-                    <div v-for="item in items">
-                        <hr color="#000">
-                        <div v-for="x in item">
-                            {{ x.month }} -
-                            {{ x.day }}
+                    <div v-for="items in arrayItems">
+
+                        <div v-for="item in items">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="col">
+                                    #
+                                </div>
+                                <div class="col">
+                                    {{item.day}} - {{item.month}} - {{item.year}}
+                                </div>
+                                <div class="col">{{ item.profit }}%</div>
+                                <div class="col" >Symbol</div>
+                                <div class="col">L/S</div>
+                                <div class="col">PnL%</div>
+                            </div>
                         </div>
                     </div>
+
+
 <!--                    <th scope="row">{{ item.id }}</th>-->
 <!--                    <td> {{ item.title }}</td>-->
 <!--                    <td>Otto</td>-->
@@ -40,10 +66,10 @@
 <!--                           Перейти-->
 <!--                        </router-link>-->
 <!--                    </td>-->
-                </tr>
+                </div>
 
-            </tbody>
-        </table>
+            </div>
+        </div>
 
 
         <nav v-if="arrayLinks.length"
